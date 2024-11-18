@@ -40,7 +40,7 @@ Key highlights include:
 
 ## 👥 **Team Members**
 
-- **Name 1**: Role (e.g., Team Leader, Algorithm Specialist)
+- **허성빈**: Role (e.g., Team Leader, Algorithm Specialist)
 - **Name 2**: Role (e.g., UI/UX Designer, Data Analyst)
 - **Name 3**: Role (e.g., Documentation Manager, Backend Developer)
 - **Name 4**: Role (e.g., Frontend Developer, QA Tester)
