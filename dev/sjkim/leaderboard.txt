@@ -1,0 +1,10 @@
+tjdwns0428	20
+alice	100
+bob	120
+carol	130
+kate	135
+kate	135
+dave	140
+eve	150
+jonathan	159
+frank	160
