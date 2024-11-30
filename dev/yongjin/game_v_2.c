@@ -22,17 +22,20 @@ int main() {
     int row, col;
     int safeSquares = SIZE * SIZE - MINES; // 지뢰가 없는 칸의 수
     int moves = 0;
-    
+    clock_t start, end; // 시간을 저장할 변수 선언
+
+    start = clock(); // 게임 시작 시간 기록
+
     initialize();
     placeMines();
     calculateMines();
-    
+
     while (1) {
         printBoard();
-        
+
         printf("Enter row and column to reveal (0-%d): ", SIZE - 1);
         scanf("%d %d", &row, &col);
-        
+
         if (row < 0 || row >= SIZE || col < 0 || col >= SIZE) {
             printf("Invalid position. Try again.\n");
             continue;
@@ -44,9 +47,12 @@ int main() {
         } else {
             reveal(row, col);
             moves++;
-            
+
             if (moves == safeSquares) {
+                end = clock(); // 게임 종료 시간 기록
+                double timeTaken = (double)(end - start) / CLOCKS_PER_SEC; // 경과 시간 계산
                 printf("Congratulations! You've cleared the board without hitting a mine.\n");
+                printf("Time taken: %.2f seconds\n", timeTaken);
                 break;
             }
         }
@@ -88,7 +94,7 @@ void calculateMines() {
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             if (mines[i][j] == 1) continue;
-            
+
             int count = 0;
             for (int x = -1; x <= 1; x++) {
                 for (int y = -1; y <= 1; y++) {
