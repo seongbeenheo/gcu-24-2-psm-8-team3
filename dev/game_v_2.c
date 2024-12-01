@@ -24,6 +24,8 @@ int checkMine(int row, int col);
 void reveal(int row, int col);
 
 int main() {
+    char username[20];
+    double timeTaken = 0.0;
     while (1) {
         printf("Are you registered? [Y/N]\n");
         char yes_no;
@@ -31,19 +33,20 @@ int main() {
         while (getchar() != '\n');
 
         if (yes_no == 'Y') {
-            login();
+            login(username);
             break;
         }
             
         else if (yes_no == 'N') {
             regi();
-            login();
+            login(username);
             break;
         }
         else printf("Please enter valid answer.\n");
     }
 
 
+    int has_cleared = 0;
     //------------게임 시작----------------------------------------------
     int row, col;
     int safeSquares = SIZE * SIZE - MINES; // 지뢰가 없는 칸의 수
@@ -76,13 +79,16 @@ int main() {
 
             if (moves == safeSquares) {
                 end = clock(); // 게임 종료 시간 기록
-                double timeTaken = (double)(end - start) / CLOCKS_PER_SEC; // 경과 시간 계산
+                timeTaken = (double)(end - start) / CLOCKS_PER_SEC; // 경과 시간 계산
+                has_cleared = 1;
                 printf("Congratulations! You've cleared the board without hitting a mine.\n");
                 printf("Time taken: %.2f seconds\n", timeTaken);
                 break;
             }
         }
     }
+
+    if (has_cleared) highscore(username, timeTaken);
 
     return 0;
 }

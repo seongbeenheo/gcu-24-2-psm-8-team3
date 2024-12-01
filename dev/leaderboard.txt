@@ -1,10 +1,10 @@
+seongbeen	0.0
+tjdwns0428	15.5
 tjdwns0428	20.0
+tjdwns0428	36.8
 thrall	44.5
 jotaro	77.7
 jotaro	77.7
+abcd	79.6
 alice	100.0
 bob	120.0
-carol	130.0
-kate	135.0
-kate	135.0
-dave	140.0

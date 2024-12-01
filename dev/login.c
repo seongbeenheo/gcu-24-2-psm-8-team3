@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void login() {
+void login(char* username) {
 	FILE* login_file;
 	//회원 정보 파일 열기(읽기)
 	login_file = fopen("login_info.txt", "r");
@@ -45,6 +45,7 @@ void login() {
 				//둘다 맞은 경우 --> 로그인 성공! 루프 탈출
 				else {
 					printf("Log in successful. Welcome, %s\n", id_input);
+					strcpy(username, id_input);
 					is_logged_in = 1;
 					break;
 				}
