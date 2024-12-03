@@ -1,9 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
+#include "login.h"
 
-
-void regi() {
+void regi(char* id) {
     FILE* login_info;
 
     char username[20], password[20];
@@ -13,6 +13,7 @@ void regi() {
         is_duplicate = 0;
 
         //유저명 입력
+        printf("REGISTRATION\n");
         printf("Please enter username: ");
         gets_s(username, sizeof(username));
 
@@ -55,4 +56,6 @@ void regi() {
     fclose(login_info); //파일 닫기
 
     printf("Registration successful!\n");
+    login(id);
+    
 }

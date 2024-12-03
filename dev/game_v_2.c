@@ -38,8 +38,7 @@ int main() {
         }
             
         else if (yes_no == 'N' || yes_no == 'n') {
-            regi();
-            login(username);
+            regi(username);
             break;
         }
         else printf("Please enter valid answer.\n");

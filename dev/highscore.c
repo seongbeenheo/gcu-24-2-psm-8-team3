@@ -31,8 +31,8 @@ void highscore(char username[], float time) {
 			topten[j].record = time;
 			if (!is_updated) is_updated = 1;
 		}
-		
 		else {//현재 기록보다 느리다면 중단
+		
 			break;
 		}
 	}
@@ -46,12 +46,12 @@ void highscore(char username[], float time) {
 	fclose(leaderboard);
 
 	//출력
-	if (is_updated) printf("HIGHSCORE UPDATED!!\n");
-	else printf("CURRENT HIGHSCORE\n");
+	if (is_updated) printf("\nHIGHSCORE UPDATED!!\n");
+	else printf("\nCURRENT HIGHSCORE\n");
 
 	for (int k = 0; k < i; k++) {
 		printf("%d. %s - %.1f", k + 1, topten[k].id, topten[k].record);
-		if (k == j + 1) {
+		if (is_updated && k == j + 1) {
 			printf(" <--- NEW!!");
 		}
 		printf("\n");

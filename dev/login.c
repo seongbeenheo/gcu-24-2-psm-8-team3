@@ -1,8 +1,9 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
+#include "register.h"
 
-void login(char* username) {
+void login(char* id) {
 	FILE* login_file;
 	//회원 정보 파일 열기(읽기)
 	login_file = fopen("login_info.txt", "r");
@@ -13,6 +14,7 @@ void login(char* username) {
 	//아이디 입력받고 저장
 	char id_input[20];
 	char pw_input[20];
+	printf("LOG IN\n");
 	printf("Username: ");
 	gets_s(id_input, sizeof(id_input));
 	printf("\n");
@@ -23,6 +25,7 @@ void login(char* username) {
 	//회원 정보 파일 한줄씩 읽기
 	char idpw[100];
 	char existing_id[20], existing_pw[20];
+
 	while (fgets(idpw, sizeof(idpw), login_file)) {
 		//idpw에서 ID와 PW를 분리
 		if (sscanf(idpw, "%s %s", existing_id, existing_pw) == 2) {
@@ -45,7 +48,7 @@ void login(char* username) {
 				//둘다 맞은 경우 --> 로그인 성공! 루프 탈출
 				else {
 					printf("Log in successful. Welcome, %s\n", id_input);
-					strcpy(username, id_input);
+					strcpy(id, id_input);
 					is_logged_in = 1;
 					break;
 				}
@@ -62,5 +65,8 @@ void login(char* username) {
 		}
 	}
 
-	if (!username_matched) printf("Username not found!");
+	if (!username_matched) {
+		printf("Username not found! Please sign up.\n");
+		regi(id);
+	}
 }
