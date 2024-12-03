@@ -32,12 +32,12 @@ int main() {
         scanf_s(" %c", &yes_no);
         while (getchar() != '\n');
 
-        if (yes_no == 'Y') {
+        if (yes_no == 'Y' || yes_no == 'y') {
             login(username);
             break;
         }
             
-        else if (yes_no == 'N') {
+        else if (yes_no == 'N' || yes_no == 'n') {
             regi();
             login(username);
             break;
