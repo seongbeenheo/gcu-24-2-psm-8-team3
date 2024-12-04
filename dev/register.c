@@ -3,6 +3,22 @@
 #include <string.h>
 #include "login.h"
 
+#define SHIFT 3 // 카이사르 암호화의 이동 값
+
+// 모든 문자에 대해 카이사르 암호화 함수
+void caesarEncrypt(char* text, int shift) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        text[i] = (text[i] + shift) % 256; // 256으로 모듈러 연산하여 모든 char에 적용
+    }
+}
+
+// 모든 문자에 대해 카이사르 복호화 함수
+void caesarDecrypt(char* text, int shift) {
+    for (int i = 0; text[i] != '\0'; i++) {
+        text[i] = (text[i] - shift + 256) % 256; // 음수 방지를 위해 +256
+    }
+}
+
 void regi(char* id) {
     FILE* login_info;
 
@@ -43,6 +59,9 @@ void regi(char* id) {
     //비밀번호 입력
     printf("Please enter password: ");
     gets_s(password, sizeof(password));
+
+    // 비밀번호 암호화
+    caesarEncrypt(password, SHIFT);
 
     //파일 열기 (추가)
     login_info = fopen("login_info.txt", "a");

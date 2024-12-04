@@ -35,6 +35,9 @@ void login(char* id) {
 			if (strcmp(existing_id, id_input)) continue;
 			username_matched = 1;
 
+			caesarDecrypt(existing_pw, SHIFT);
+
+
 			while (1) { //패스워드 틀렸을 때 재입력 위해 무한루프 생성
 				//패스워드 입력받고 저장
 				printf("Password: ");
